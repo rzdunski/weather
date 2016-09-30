@@ -1,13 +1,15 @@
 from urllib2 import Request, urlopen, URLError
 import json, datetime, pprint
-
+from sys import argv
 """
 documetation based on website
 http://openweathermap.org/current
 """
-API_Key = '7c30e6028d4f8b2e097ff06c49bc6658'
-city = 'Torun'
-request="http://api.openweathermap.org/data/2.5/weather?q=" + city+ "&units=metric&APPID=7c30e6028d4f8b2e097ff06c49bc6658"
+
+script, city, API_Key = argv
+
+
+request="http://api.openweathermap.org/data/2.5/weather?q=" + city+ "&units=metric&APPID=" + API_Key
 
 
 
@@ -49,9 +51,5 @@ def data_weather(js):
     return s_data
 
 js = js_data(request)
-#print '\n'
-#print 'js:'
-#pprint.pprint(js)
-#print '\n'
 s_data = data_weather(js)
 print s_data
